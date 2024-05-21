@@ -1,0 +1,39 @@
+
+name: quiz
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets\fontes\images\vg527_capa_insta_1fy6seC.webp
+    - assets\fontes\images\vogue-brasil-setembro-2020-capa_4.webp
+    - assets\fontes\images\cardi-b.webp
+
+  fonts:
+    - family: Stocky
+      fonts:
+        - asset: assets/fontes/stocky.ttf
+
+    - family: JustusOldstyle
+      fonts:
+        - asset: assets/fontes/Justus-Oldstyle.ttf
+        
+    - family: Pointy
+      fonts:
+        - asset: assets/fontes/pointy.ttf
