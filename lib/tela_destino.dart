@@ -23,11 +23,13 @@ class _QuizPageState extends State<QuizPage> {
         'D) Uma águia'
       ],
       'C) Um monograma "LV"',
+      'assets/fontes/images/LV.jpg',
     ),
     Question(
       'Qual marca de luxo usa um logotipo de duplo "G"?',
       ['A) Gucci', 'B) Chanel', 'C) Prada', 'D) Burberry'],
       'A) Gucci',
+      'assets/fontes/images/GUCCI.jpg',
     ),
     Question(
       'Quem fundou a marca de luxo Chanel?',
@@ -38,16 +40,19 @@ class _QuizPageState extends State<QuizPage> {
         'D) Christian Dior'
       ],
       'A) Coco Chanel',
+      'assets/fontes/images/CHANEL.jpg',
     ),
     Question(
       'Qual dessas marcas de luxo foi fundada na Itália?',
       ['A) Louis Vuitton', 'B) Versace', 'C) Hermes', 'D) Cartier'],
       'B) Versace',
+      'assets/fontes/images/versace-s21-031.webp',
     ),
     Question(
       'Qual é o produto mais famoso da marca Hermès?',
       ['A) Relógios', 'B) Perfumes', 'C) Bolsas Birkin', 'D) Óculos de sol'],
       'C) Bolsas Birkin',
+      'assets/fontes/images/HERMES.webp',
     ),
     Question(
       'Qual dessas marcas é mais conhecida por seus sapatos vermelhos de sola?',
@@ -58,6 +63,7 @@ class _QuizPageState extends State<QuizPage> {
         'D) Salvatore Ferragamo'
       ],
       'C) Christian Louboutin',
+      'assets/fontes/images/LOBUTAN.jpg',
     ),
     Question(
       'Qual dessas marcas é mais conhecida por sua alta-costura?',
@@ -68,6 +74,7 @@ class _QuizPageState extends State<QuizPage> {
         'D) Dolce & Gabbana'
       ],
       'A) Givenchy',
+      'assets/fontes/images/GIVENCHI.jpg',
     ),
     Question(
       'Qual é o nome da linha de alta-costura da marca italiana Versace?',
@@ -78,6 +85,7 @@ class _QuizPageState extends State<QuizPage> {
         'D) Versace Atelier'
       ],
       'A) Versace Couture',
+      'assets/fontes/images/VERSACE-FALL-1997-COUTURE-DETAIL-154-NAOMI-CAMPBELL-CN10046939.webp',
     ),
   ];
 
@@ -160,14 +168,9 @@ class _QuizPageState extends State<QuizPage> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 231, 210, 89),
-              Color.fromARGB(255, 228, 98, 233),
-              Color.fromARGB(255, 14, 84, 141),
-            ],
+          image: DecorationImage(
+            image: AssetImage('assets/fontes/images/folha.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(
@@ -189,77 +192,94 @@ class _QuizPageState extends State<QuizPage> {
               Expanded(
                 flex: 5,
                 child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 120,
-                        height: 120,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.topRight,
+                          padding: EdgeInsets.only(right: 20.0, top: 10.0),
                           child: Text(
                             formatTime(timeLeft),
                             style: TextStyle(
                               fontSize: 24.0,
-                              color: Colors.purple,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Pointy',
+                              fontFamily: 'JustusOldstyle',
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      Container(
-                        padding: EdgeInsets.all(16.0),
-                        margin: EdgeInsets.symmetric(horizontal: 24.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          questions[questionIndex].questionText,
-                          textAlign: TextAlign.center,
+                        SizedBox(height: 20),
+                        Text(
+                          'Pergunta ${questionIndex + 1} de ${questions.length}',
                           style: TextStyle(
-                            fontSize: 24.0,
-                            color: Color.fromARGB(255, 150, 21, 150),
-                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 18,
                             fontFamily: 'JustusOldstyle',
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 10),
+                        Container(
+                          width: 300,
+                          height: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 2),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              questions[questionIndex].imagePath,
+                              width: 300,
+                              height: 300,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          padding: EdgeInsets.all(16.0),
+                          margin: EdgeInsets.symmetric(horizontal: 24.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            questions[questionIndex].questionText,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              color: Color.fromARGB(255, 243, 101, 179),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'JustusOldstyle',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             if (questionIndex < questions.length)
               Expanded(
                 flex: 3,
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Column(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: questions[questionIndex]
                           .options
                           .sublist(0, 2)
-                          .asMap()
-                          .entries
-                          .map((entry) {
-                        int idx = entry.key;
-                        String option = entry.value;
+                          .map((option) {
                         return ElevatedButton(
                           onPressed: () => checkAnswer(option),
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              idx == 0
-                                  ? const Color.fromARGB(255, 199, 121, 212)
-                                  : const Color.fromARGB(255, 148, 87, 165),
+                            backgroundColor: WidgetStateProperty.all<Color>(
+                              const Color.fromARGB(255, 255, 255, 255),
                             ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                            shape:
+                                WidgetStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
@@ -268,33 +288,27 @@ class _QuizPageState extends State<QuizPage> {
                           child: Text(
                             option,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 243, 101, 179),
                               fontFamily: 'JustusOldstyle',
                             ),
                           ),
                         );
                       }).toList(),
                     ),
-                    Column(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: questions[questionIndex]
                           .options
                           .sublist(2, 4)
-                          .asMap()
-                          .entries
-                          .map((entry) {
-                        int idx = entry.key;
-                        String option = entry.value;
+                          .map((option) {
                         return ElevatedButton(
                           onPressed: () => checkAnswer(option),
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              idx == 0
-                                  ? const Color.fromARGB(255, 117, 65, 182)
-                                  : const Color.fromARGB(255, 147, 103, 167),
+                            backgroundColor: WidgetStateProperty.all<Color>(
+                              const Color.fromARGB(255, 255, 255, 255),
                             ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                            shape:
+                                WidgetStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
@@ -303,7 +317,7 @@ class _QuizPageState extends State<QuizPage> {
                           child: Text(
                             option,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 243, 101, 179),
                               fontFamily: 'JustusOldstyle',
                             ),
                           ),
@@ -311,44 +325,6 @@ class _QuizPageState extends State<QuizPage> {
                       }).toList(),
                     ),
                   ],
-                ),
-              ),
-            if (questionIndex >= questions.length)
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TelaResultado(
-                            score: score,
-                            totalPerguntas: questions.length,
-                            resetQuiz: resetQuiz,
-                          ),
-                        ),
-                      );
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.purple),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'VEJA O RESULTADO',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'JustusOldstyle',
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
                 ),
               ),
           ],
@@ -362,6 +338,7 @@ class Question {
   final String questionText;
   final List<String> options;
   final String correctAnswer;
+  final String imagePath;
 
-  Question(this.questionText, this.options, this.correctAnswer);
+  Question(this.questionText, this.options, this.correctAnswer, this.imagePath);
 }

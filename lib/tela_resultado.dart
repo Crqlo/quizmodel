@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TelaResultado extends StatelessWidget {
   final int score;
   final int totalPerguntas;
-  final Function resetQuiz;
+  final VoidCallback resetQuiz;
 
   TelaResultado({
     required this.score,
@@ -17,19 +17,70 @@ class TelaResultado extends StatelessWidget {
         score >= (totalPerguntas / 2) ? 'Parabéns!' : 'Tente novamente';
 
     return Scaffold(
-      appBar: null,
       body: Stack(
         children: [
           Image.asset(
-            'assets/fontes/images/vogue-brasil-setembro-2020-capa_4.webp',
+            'assets/fontes/images/the book model (2).jpg',
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
           ),
-          Container(
-            color: Colors.black.withOpacity(0.6),
-            width: double.infinity,
-            height: double.infinity,
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    mensagem,
+                    style: TextStyle(
+                      fontSize: 40,
+                      color: Color.fromARGB(255, 230, 99, 160),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'JustusOldstyle',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Pontuação: $score / $totalPerguntas',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Color.fromARGB(255, 230, 99, 160),
+                      fontFamily: 'JustusOldstyle',
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      resetQuiz();
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 230, 99, 160),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                    ),
+                    child: Text(
+                      "Recomeçar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'JustusOldstyle',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Positioned(
             top: 50,
@@ -41,17 +92,18 @@ class TelaResultado extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.purple),
+                    Icon(Icons.arrow_back,
+                        color: Color.fromARGB(255, 230, 99, 160)),
                     SizedBox(width: 10),
                     Text(
                       'Resultado',
                       style: TextStyle(
-                        color: Colors.purple,
+                        color: Color.fromARGB(255, 230, 99, 160),
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -59,62 +111,6 @@ class TelaResultado extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ),
-          Center(
-            child: Text(
-              mensagem,
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Pointy',
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 50,
-            left: 20,
-            right: 20,
-            child: Column(
-              children: [
-                Text(
-                  'Pontuação: $score / $totalPerguntas',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                    fontFamily: 'Pointy',
-                  ),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    resetQuiz();
-                    Navigator.pop(context);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                      EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-                    ),
-                  ),
-                  child: Text(
-                    "Recomeçar",
-                    style: TextStyle(
-                      color: Colors.purple,
-                      fontFamily: 'Pointy',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ),
         ],

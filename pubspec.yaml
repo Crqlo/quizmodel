@@ -1,12 +1,10 @@
-
 name: quiz
 description: A new Flutter project.
-
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.4.1 <4.0.0"
 
 dependencies:
   flutter:
@@ -21,9 +19,17 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets\fontes\images\vg527_capa_insta_1fy6seC.webp
-    - assets\fontes\images\vogue-brasil-setembro-2020-capa_4.webp
-    - assets\fontes\images\cardi-b.webp
+    - assets/fontes/images/versace-s21-031.webp
+    - assets/fontes/images/VERSACE-FALL-1997-COUTURE-DETAIL-154-NAOMI-CAMPBELL-CN10046939.webp
+    - assets/fontes/images/LV.jpg
+    - assets/fontes/images/LOBUTAN.jpg
+    - assets/fontes/images/HERMES.webp
+    - assets/fontes/images/GUCCI.jpg
+    - assets/fontes/images/GIVENCHI.jpg
+    - assets/fontes/images/CHANEL.jpg
+    - assets/fontes/images/the book model (1).jpg
+    - assets/fontes/images/folha.jpg
+    - assets/fontes/images/the book model (2).jpg
 
   fonts:
     - family: Stocky
